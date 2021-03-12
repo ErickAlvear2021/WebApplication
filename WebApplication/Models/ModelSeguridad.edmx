@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDD_HRVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CabeceraEquipos">
+          <Key>
+            <PropertyRef Name="id_cabecera" />
+          </Key>
+          <Property Name="id_cabecera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_cabecera" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="descripcion_cabecera" Type="varchar" MaxLength="200" />
+          <Property Name="estado_cabecera" Type="bit" Nullable="false" />
+          <Property Name="creacion_cabecera" Type="datetime" Nullable="false" />
+          <Property Name="usuario_cabecera" Type="int" Nullable="false" />
+          <Property Name="terminal_cabecera" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="modificacion_cabecera" Type="datetime" Nullable="false" />
+          <Property Name="usuariomod_cabecera" Type="int" Nullable="false" />
+          <Property Name="terminalmod_cabecera" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="aux1_cabecera" Type="int" />
+          <Property Name="aux2_cabecera" Type="int" />
+          <Property Name="aux3_cabecera" Type="varchar" MaxLength="100" />
+          <Property Name="aux4_cabecera" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="provincia_cliente" Type="int" Nullable="false" />
+          <Property Name="cuidad_cliente" Type="int" Nullable="false" />
+          <Property Name="nombre_cliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ruc_cliente" Type="varchar" MaxLength="13" />
+          <Property Name="direccion_cliente" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="telefono1_cliente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="telefono2_cliente" Type="varchar" MaxLength="10" />
+          <Property Name="email_cliente" Type="varchar" MaxLength="50" />
+          <Property Name="web_cliente" Type="varchar" MaxLength="50" />
+          <Property Name="contacto1_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="celular1_cliente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="contacto2_cliente" Type="varchar" MaxLength="50" />
+          <Property Name="celular2_cliente" Type="varchar" MaxLength="10" />
+          <Property Name="estado_cliente" Type="bit" Nullable="false" />
+          <Property Name="aux1_cliente" Type="int" />
+          <Property Name="aux2_cliente" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CuidadClientes">
+          <Key>
+            <PropertyRef Name="id_cuidad" />
+          </Key>
+          <Property Name="id_cuidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_provincia" Type="int" Nullable="false" />
+          <Property Name="nombre_cuidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aux1_cuidad" Type="int" />
+          <Property Name="aux2_cuidad" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DetalleEquipos">
+          <Key>
+            <PropertyRef Name="id_detalle" />
+          </Key>
+          <Property Name="id_detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cabecera" Type="int" Nullable="false" />
+          <Property Name="nombre_detalle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="valor_detalle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="valor_detallei" Type="int" Nullable="false" />
+          <Property Name="estado_detalle" Type="bit" Nullable="false" />
+          <Property Name="aux3_detalle" Type="varchar" MaxLength="100" />
+          <Property Name="aux4_detalle" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="id_equipo" />
+          </Key>
+          <Property Name="id_equipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="grupo_equipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="marca_quipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre_equipo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="modelo_equipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="refrigeracion_equipo" Type="varchar" MaxLength="50" />
+          <Property Name="serie_equipo" Type="varchar" MaxLength="50" />
+          <Property Name="voltaje_equipo" Type="varchar" MaxLength="50" />
+          <Property Name="amperaje_equipo" Type="varchar" MaxLength="50" />
+          <Property Name="presion_equipo" Type="varchar" MaxLength="50" />
+          <Property Name="estado_equipo" Type="bit" />
+          <Property Name="creacion_equipo" Type="datetime" Nullable="false" />
+          <Property Name="usuario_equipo" Type="int" Nullable="false" />
+          <Property Name="terminal_equipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modificacion_equipo" Type="datetime" Nullable="false" />
+          <Property Name="usuariomod_equipo" Type="int" Nullable="false" />
+          <Property Name="terminalmod_equipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListaTrabajos">
+          <Key>
+            <PropertyRef Name="id_listatrabajo" />
+          </Key>
+          <Property Name="id_listatrabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="detalle_listatrabajo" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="OrdenesTrabajo">
+          <Key>
+            <PropertyRef Name="id_orden" />
+          </Key>
+          <Property Name="id_orden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_equipo" Type="int" Nullable="false" />
+          <Property Name="orden_tipotrabajo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="orden_tecnico" Type="int" Nullable="false" />
+          <Property Name="orden_problema" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="orden_estado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="orden_notas" Type="varchar" MaxLength="500" />
+          <Property Name="orden_fechainicio" Type="datetime" Nullable="false" />
+          <Property Name="orden_fechafin" Type="datetime" Nullable="false" />
+          <Property Name="orden_fechainiciotr" Type="datetime" />
+          <Property Name="orden_fechafintr" Type="datetime" />
+          <Property Name="orden_observaciontr" Type="varchar" MaxLength="150" />
+          <Property Name="orden_imagentr" Type="varbinary(max)" />
+          <Property Name="orden_rutaimagen" Type="varchar" MaxLength="100" />
+          <Property Name="orden_longitud" Type="varchar" MaxLength="50" />
+          <Property Name="orden_latitud" Type="varchar" MaxLength="50" />
+          <Property Name="orden_auxvar" Type="varchar" MaxLength="50" />
+          <Property Name="orden_auxint" Type="int" />
+        </EntityType>
+        <EntityType Name="OrdenesTrabajoDetalle">
+          <Key>
+            <PropertyRef Name="id_ordendetalle" />
+          </Key>
+          <Property Name="id_ordendetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_orden" Type="int" Nullable="false" />
+          <Property Name="id_listatrabajo" Type="int" Nullable="false" />
+          <Property Name="auxv_ordendetalle" Type="varchar" MaxLength="50" />
+          <Property Name="auxi_ordendetalle" Type="int" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_perfil" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado_perfil" Type="bit" Nullable="false" />
+          <Property Name="aux_peri" Type="int" />
+          <Property Name="aux_perii" Type="varchar" MaxLength="50" />
+          <Property Name="creacion_perfil" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProvinciaClientes">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_provincia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aux1_provincia" Type="int" />
+          <Property Name="aux2_provincia" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="login_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_perfil" Type="int" Nullable="false" />
+          <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="login_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado_usuario" Type="bit" Nullable="false" />
+          <Property Name="imagen_usuario" Type="varchar" MaxLength="100" />
+          <Property Name="aux_usui" Type="int" />
+          <Property Name="aux_usuii" Type="varchar" MaxLength="50" />
+          <Property Name="creacion_usuario" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CuidadClientes_ProvinciaClientes">
+          <End Role="ProvinciaClientes" Type="Self.ProvinciaClientes" Multiplicity="1" />
+          <End Role="CuidadClientes" Type="Self.CuidadClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProvinciaClientes">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="CuidadClientes">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleEquipos_CabeceraEquipos">
+          <End Role="CabeceraEquipos" Type="Self.CabeceraEquipos" Multiplicity="1" />
+          <End Role="DetalleEquipos" Type="Self.DetalleEquipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CabeceraEquipos">
+              <PropertyRef Name="id_cabecera" />
+            </Principal>
+            <Dependent Role="DetalleEquipos">
+              <PropertyRef Name="id_cabecera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipos_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OdenesTrabajo_Equipos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="OrdenesTrabajo" Type="Self.OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id_equipo" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesTrabajoDetalle_OrdenesTrabajo">
+          <End Role="OrdenesTrabajo" Type="Self.OrdenesTrabajo" Multiplicity="1" />
+          <End Role="OrdenesTrabajoDetalle" Type="Self.OrdenesTrabajoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenesTrabajo">
+              <PropertyRef Name="id_orden" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajoDetalle">
+              <PropertyRef Name="id_orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Perfiles">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDD_HRVModelStoreContainer">
+          <EntitySet Name="CabeceraEquipos" EntityType="Self.CabeceraEquipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuidadClientes" EntityType="Self.CuidadClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleEquipos" EntityType="Self.DetalleEquipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListaTrabajos" EntityType="Self.ListaTrabajos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdenesTrabajo" EntityType="Self.OrdenesTrabajo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdenesTrabajoDetalle" EntityType="Self.OrdenesTrabajoDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvinciaClientes" EntityType="Self.ProvinciaClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CuidadClientes_ProvinciaClientes" Association="Self.FK_CuidadClientes_ProvinciaClientes">
+            <End Role="ProvinciaClientes" EntitySet="ProvinciaClientes" />
+            <End Role="CuidadClientes" EntitySet="CuidadClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleEquipos_CabeceraEquipos" Association="Self.FK_DetalleEquipos_CabeceraEquipos">
+            <End Role="CabeceraEquipos" EntitySet="CabeceraEquipos" />
+            <End Role="DetalleEquipos" EntitySet="DetalleEquipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipos_Clientes" Association="Self.FK_Equipos_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OdenesTrabajo_Equipos" Association="Self.FK_OdenesTrabajo_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesTrabajoDetalle_OrdenesTrabajo" Association="Self.FK_OrdenesTrabajoDetalle_OrdenesTrabajo">
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+            <End Role="OrdenesTrabajoDetalle" EntitySet="OrdenesTrabajoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Perfiles" Association="Self.FK_Usuarios_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDD_HRVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_perfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_perfil" Type="Boolean" Nullable="false" />
+          <Property Name="aux_peri" Type="Int32" />
+          <Property Name="aux_perii" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creacion_perfil" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Perfiles" FromRole="Perfiles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="login_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_perfil" Type="Int32" Nullable="false" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="login_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_usuario" Type="Boolean" Nullable="false" />
+          <Property Name="aux_usui" Type="Int32" />
+          <Property Name="aux_usuii" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creacion_usuario" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Perfiles" Relationship="Self.FK_Usuarios_Perfiles" FromRole="Usuarios" ToRole="Perfiles" />
+          <Property Name="imagen_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Usuarios_Perfiles">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDD_HRVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Usuarios_Perfiles" Association="Self.FK_Usuarios_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="Clientes" EntityType="BDD_HRVModel.Clientes" />
+          <EntitySet Name="CuidadClientes" EntityType="BDD_HRVModel.CuidadClientes" />
+          <EntitySet Name="ProvinciaClientes" EntityType="BDD_HRVModel.ProvinciaClientes" />
+          <AssociationSet Name="FK_CuidadClientes_ProvinciaClientes" Association="BDD_HRVModel.FK_CuidadClientes_ProvinciaClientes">
+            <End Role="ProvinciaClientes" EntitySet="ProvinciaClientes" />
+            <End Role="CuidadClientes" EntitySet="CuidadClientes" />
+          </AssociationSet>
+          <EntitySet Name="CabeceraEquipos" EntityType="BDD_HRVModel.CabeceraEquipos" />
+          <EntitySet Name="DetalleEquipos" EntityType="BDD_HRVModel.DetalleEquipos" />
+          <AssociationSet Name="FK_DetalleEquipos_CabeceraEquipos" Association="BDD_HRVModel.FK_DetalleEquipos_CabeceraEquipos">
+            <End Role="CabeceraEquipos" EntitySet="CabeceraEquipos" />
+            <End Role="DetalleEquipos" EntitySet="DetalleEquipos" />
+          </AssociationSet>
+          <EntitySet Name="Equipos" EntityType="BDD_HRVModel.Equipos" />
+          <AssociationSet Name="FK_Equipos_Clientes" Association="BDD_HRVModel.FK_Equipos_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <EntitySet Name="OrdenesTrabajo" EntityType="BDD_HRVModel.OrdenesTrabajo" />
+          <AssociationSet Name="FK_OdenesTrabajo_Equipos" Association="BDD_HRVModel.FK_OdenesTrabajo_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+          </AssociationSet>
+          <EntitySet Name="ListaTrabajos" EntityType="BDD_HRVModel.ListaTrabajos" />
+          <EntitySet Name="OrdenesTrabajoDetalle" EntityType="BDD_HRVModel.OrdenesTrabajoDetalle" />
+          <AssociationSet Name="FK_OrdenesTrabajoDetalle_OrdenesTrabajo" Association="BDD_HRVModel.FK_OrdenesTrabajoDetalle_OrdenesTrabajo">
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+            <End Role="OrdenesTrabajoDetalle" EntitySet="OrdenesTrabajoDetalle" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="provincia_cliente" Type="Int32" Nullable="false" />
+          <Property Name="cuidad_cliente" Type="Int32" Nullable="false" />
+          <Property Name="nombre_cliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ruc_cliente" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_cliente" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="telefono1_cliente" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="telefono2_cliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="email_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="web_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contacto1_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="celular1_cliente" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="contacto2_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="celular2_cliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="estado_cliente" Type="Boolean" Nullable="false" />
+          <Property Name="aux1_cliente" Type="Int32" />
+          <Property Name="aux2_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipos" Relationship="BDD_HRVModel.FK_Equipos_Clientes" FromRole="Clientes" ToRole="Equipos" />
+        </EntityType>
+        <EntityType Name="CuidadClientes">
+          <Key>
+            <PropertyRef Name="id_cuidad" />
+          </Key>
+          <Property Name="id_cuidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_provincia" Type="Int32" Nullable="false" />
+          <Property Name="nombre_cuidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aux1_cuidad" Type="Int32" />
+          <Property Name="aux2_cuidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProvinciaClientes" Relationship="BDD_HRVModel.FK_CuidadClientes_ProvinciaClientes" FromRole="CuidadClientes" ToRole="ProvinciaClientes" />
+        </EntityType>
+        <EntityType Name="ProvinciaClientes">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_provincia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aux1_provincia" Type="Int32" />
+          <Property Name="aux2_provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CuidadClientes" Relationship="BDD_HRVModel.FK_CuidadClientes_ProvinciaClientes" FromRole="ProvinciaClientes" ToRole="CuidadClientes" />
+        </EntityType>
+        <Association Name="FK_CuidadClientes_ProvinciaClientes">
+          <End Type="BDD_HRVModel.ProvinciaClientes" Role="ProvinciaClientes" Multiplicity="1" />
+          <End Type="BDD_HRVModel.CuidadClientes" Role="CuidadClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProvinciaClientes">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="CuidadClientes">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CabeceraEquipos">
+          <Key>
+            <PropertyRef Name="id_cabecera" />
+          </Key>
+          <Property Name="id_cabecera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_cabecera" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion_cabecera" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="estado_cabecera" Type="Boolean" Nullable="false" />
+          <Property Name="creacion_cabecera" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_cabecera" Type="Int32" Nullable="false" />
+          <Property Name="terminal_cabecera" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="modificacion_cabecera" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuariomod_cabecera" Type="Int32" Nullable="false" />
+          <Property Name="terminalmod_cabecera" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="aux1_cabecera" Type="Int32" />
+          <Property Name="aux2_cabecera" Type="Int32" />
+          <Property Name="aux3_cabecera" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="aux4_cabecera" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetalleEquipos" Relationship="BDD_HRVModel.FK_DetalleEquipos_CabeceraEquipos" FromRole="CabeceraEquipos" ToRole="DetalleEquipos" />
+        </EntityType>
+        <EntityType Name="DetalleEquipos">
+          <Key>
+            <PropertyRef Name="id_detalle" />
+          </Key>
+          <Property Name="id_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cabecera" Type="Int32" Nullable="false" />
+          <Property Name="nombre_detalle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="valor_detalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor_detallei" Type="Int32" Nullable="false" />
+          <Property Name="estado_detalle" Type="Boolean" Nullable="false" />
+          <Property Name="aux3_detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="aux4_detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CabeceraEquipos" Relationship="BDD_HRVModel.FK_DetalleEquipos_CabeceraEquipos" FromRole="DetalleEquipos" ToRole="CabeceraEquipos" />
+        </EntityType>
+        <Association Name="FK_DetalleEquipos_CabeceraEquipos">
+          <End Type="BDD_HRVModel.CabeceraEquipos" Role="CabeceraEquipos" Multiplicity="1" />
+          <End Type="BDD_HRVModel.DetalleEquipos" Role="DetalleEquipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CabeceraEquipos">
+              <PropertyRef Name="id_cabecera" />
+            </Principal>
+            <Dependent Role="DetalleEquipos">
+              <PropertyRef Name="id_cabecera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="id_equipo" />
+          </Key>
+          <Property Name="id_equipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="grupo_equipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="marca_quipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_equipo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="modelo_equipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="refrigeracion_equipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="serie_equipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="voltaje_equipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amperaje_equipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="presion_equipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado_equipo" Type="Boolean" />
+          <Property Name="creacion_equipo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_equipo" Type="Int32" Nullable="false" />
+          <Property Name="terminal_equipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modificacion_equipo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuariomod_equipo" Type="Int32" Nullable="false" />
+          <Property Name="terminalmod_equipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clientes" Relationship="BDD_HRVModel.FK_Equipos_Clientes" FromRole="Equipos" ToRole="Clientes" />
+          <NavigationProperty Name="OrdenesTrabajo" Relationship="BDD_HRVModel.FK_OdenesTrabajo_Equipos" FromRole="Equipos" ToRole="OrdenesTrabajo" />
+        </EntityType>
+        <Association Name="FK_Equipos_Clientes">
+          <End Type="BDD_HRVModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="BDD_HRVModel.Equipos" Role="Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrdenesTrabajo">
+          <Key>
+            <PropertyRef Name="id_orden" />
+          </Key>
+          <Property Name="id_orden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_equipo" Type="Int32" Nullable="false" />
+          <Property Name="orden_tipotrabajo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orden_tecnico" Type="Int32" Nullable="false" />
+          <Property Name="orden_problema" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="orden_estado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="orden_notas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="orden_fechainicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="orden_fechafin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="orden_fechainiciotr" Type="DateTime" Precision="3" />
+          <Property Name="orden_fechafintr" Type="DateTime" Precision="3" />
+          <Property Name="orden_observaciontr" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="orden_imagentr" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="orden_rutaimagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="orden_longitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orden_latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orden_auxvar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orden_auxint" Type="Int32" />
+          <NavigationProperty Name="Equipos" Relationship="BDD_HRVModel.FK_OdenesTrabajo_Equipos" FromRole="OrdenesTrabajo" ToRole="Equipos" />
+          <NavigationProperty Name="OrdenesTrabajoDetalle" Relationship="BDD_HRVModel.FK_OrdenesTrabajoDetalle_OrdenesTrabajo" FromRole="OrdenesTrabajo" ToRole="OrdenesTrabajoDetalle" />
+        </EntityType>
+        <Association Name="FK_OdenesTrabajo_Equipos">
+          <End Type="BDD_HRVModel.Equipos" Role="Equipos" Multiplicity="1" />
+          <End Type="BDD_HRVModel.OrdenesTrabajo" Role="OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id_equipo" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ListaTrabajos">
+          <Key>
+            <PropertyRef Name="id_listatrabajo" />
+          </Key>
+          <Property Name="id_listatrabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="detalle_listatrabajo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrdenesTrabajoDetalle">
+          <Key>
+            <PropertyRef Name="id_ordendetalle" />
+          </Key>
+          <Property Name="id_ordendetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_orden" Type="Int32" Nullable="false" />
+          <Property Name="id_listatrabajo" Type="Int32" Nullable="false" />
+          <Property Name="auxv_ordendetalle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="auxi_ordendetalle" Type="Int32" />
+          <NavigationProperty Name="OrdenesTrabajo" Relationship="BDD_HRVModel.FK_OrdenesTrabajoDetalle_OrdenesTrabajo" FromRole="OrdenesTrabajoDetalle" ToRole="OrdenesTrabajo" />
+        </EntityType>
+        <Association Name="FK_OrdenesTrabajoDetalle_OrdenesTrabajo">
+          <End Type="BDD_HRVModel.OrdenesTrabajo" Role="OrdenesTrabajo" Multiplicity="1" />
+          <End Type="BDD_HRVModel.OrdenesTrabajoDetalle" Role="OrdenesTrabajoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenesTrabajo">
+              <PropertyRef Name="id_orden" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajoDetalle">
+              <PropertyRef Name="id_orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDD_HRVModelStoreContainer" CdmEntityContainer="BDD_HRVEntities">
+          <EntitySetMapping Name="Perfiles">
+            <EntityTypeMapping TypeName="BDD_HRVModel.Perfiles">
+              <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="nombre_perfil" ColumnName="nombre_perfil" />
+                <ScalarProperty Name="estado_perfil" ColumnName="estado_perfil" />
+                <ScalarProperty Name="aux_peri" ColumnName="aux_peri" />
+                <ScalarProperty Name="aux_perii" ColumnName="aux_perii" />
+                <ScalarProperty Name="creacion_perfil" ColumnName="creacion_perfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BDD_HRVModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="imagen_usuario" ColumnName="imagen_usuario" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="apellido_usuario" ColumnName="apellido_usuario" />
+                <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
+                <ScalarProperty Name="password_usuario" ColumnName="password_usuario" />
+                <ScalarProperty Name="estado_usuario" ColumnName="estado_usuario" />
+                <ScalarProperty Name="aux_usui" ColumnName="aux_usui" />
+                <ScalarProperty Name="aux_usuii" ColumnName="aux_usuii" />
+                <ScalarProperty Name="creacion_usuario" ColumnName="creacion_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="BDD_HRVModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="aux2_cliente" ColumnName="aux2_cliente" />
+                <ScalarProperty Name="aux1_cliente" ColumnName="aux1_cliente" />
+                <ScalarProperty Name="estado_cliente" ColumnName="estado_cliente" />
+                <ScalarProperty Name="celular2_cliente" ColumnName="celular2_cliente" />
+                <ScalarProperty Name="contacto2_cliente" ColumnName="contacto2_cliente" />
+                <ScalarProperty Name="celular1_cliente" ColumnName="celular1_cliente" />
+                <ScalarProperty Name="contacto1_cliente" ColumnName="contacto1_cliente" />
+                <ScalarProperty Name="web_cliente" ColumnName="web_cliente" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="telefono2_cliente" ColumnName="telefono2_cliente" />
+                <ScalarProperty Name="telefono1_cliente" ColumnName="telefono1_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="ruc_cliente" ColumnName="ruc_cliente" />
+                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+                <ScalarProperty Name="cuidad_cliente" ColumnName="cuidad_cliente" />
+                <ScalarProperty Name="provincia_cliente" ColumnName="provincia_cliente" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuidadClientes">
+            <EntityTypeMapping TypeName="BDD_HRVModel.CuidadClientes">
+              <MappingFragment StoreEntitySet="CuidadClientes">
+                <ScalarProperty Name="aux2_cuidad" ColumnName="aux2_cuidad" />
+                <ScalarProperty Name="aux1_cuidad" ColumnName="aux1_cuidad" />
+                <ScalarProperty Name="nombre_cuidad" ColumnName="nombre_cuidad" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="id_cuidad" ColumnName="id_cuidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvinciaClientes">
+            <EntityTypeMapping TypeName="BDD_HRVModel.ProvinciaClientes">
+              <MappingFragment StoreEntitySet="ProvinciaClientes">
+                <ScalarProperty Name="aux2_provincia" ColumnName="aux2_provincia" />
+                <ScalarProperty Name="aux1_provincia" ColumnName="aux1_provincia" />
+                <ScalarProperty Name="nombre_provincia" ColumnName="nombre_provincia" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CabeceraEquipos">
+            <EntityTypeMapping TypeName="BDD_HRVModel.CabeceraEquipos">
+              <MappingFragment StoreEntitySet="CabeceraEquipos">
+                <ScalarProperty Name="aux4_cabecera" ColumnName="aux4_cabecera" />
+                <ScalarProperty Name="aux3_cabecera" ColumnName="aux3_cabecera" />
+                <ScalarProperty Name="aux2_cabecera" ColumnName="aux2_cabecera" />
+                <ScalarProperty Name="aux1_cabecera" ColumnName="aux1_cabecera" />
+                <ScalarProperty Name="terminalmod_cabecera" ColumnName="terminalmod_cabecera" />
+                <ScalarProperty Name="usuariomod_cabecera" ColumnName="usuariomod_cabecera" />
+                <ScalarProperty Name="modificacion_cabecera" ColumnName="modificacion_cabecera" />
+                <ScalarProperty Name="terminal_cabecera" ColumnName="terminal_cabecera" />
+                <ScalarProperty Name="usuario_cabecera" ColumnName="usuario_cabecera" />
+                <ScalarProperty Name="creacion_cabecera" ColumnName="creacion_cabecera" />
+                <ScalarProperty Name="estado_cabecera" ColumnName="estado_cabecera" />
+                <ScalarProperty Name="descripcion_cabecera" ColumnName="descripcion_cabecera" />
+                <ScalarProperty Name="nombre_cabecera" ColumnName="nombre_cabecera" />
+                <ScalarProperty Name="id_cabecera" ColumnName="id_cabecera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleEquipos">
+            <EntityTypeMapping TypeName="BDD_HRVModel.DetalleEquipos">
+              <MappingFragment StoreEntitySet="DetalleEquipos">
+                <ScalarProperty Name="aux4_detalle" ColumnName="aux4_detalle" />
+                <ScalarProperty Name="aux3_detalle" ColumnName="aux3_detalle" />
+                <ScalarProperty Name="estado_detalle" ColumnName="estado_detalle" />
+                <ScalarProperty Name="valor_detallei" ColumnName="valor_detallei" />
+                <ScalarProperty Name="valor_detalle" ColumnName="valor_detalle" />
+                <ScalarProperty Name="nombre_detalle" ColumnName="nombre_detalle" />
+                <ScalarProperty Name="id_cabecera" ColumnName="id_cabecera" />
+                <ScalarProperty Name="id_detalle" ColumnName="id_detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipos">
+            <EntityTypeMapping TypeName="BDD_HRVModel.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="terminalmod_equipo" ColumnName="terminalmod_equipo" />
+                <ScalarProperty Name="usuariomod_equipo" ColumnName="usuariomod_equipo" />
+                <ScalarProperty Name="modificacion_equipo" ColumnName="modificacion_equipo" />
+                <ScalarProperty Name="terminal_equipo" ColumnName="terminal_equipo" />
+                <ScalarProperty Name="usuario_equipo" ColumnName="usuario_equipo" />
+                <ScalarProperty Name="creacion_equipo" ColumnName="creacion_equipo" />
+                <ScalarProperty Name="estado_equipo" ColumnName="estado_equipo" />
+                <ScalarProperty Name="presion_equipo" ColumnName="presion_equipo" />
+                <ScalarProperty Name="amperaje_equipo" ColumnName="amperaje_equipo" />
+                <ScalarProperty Name="voltaje_equipo" ColumnName="voltaje_equipo" />
+                <ScalarProperty Name="serie_equipo" ColumnName="serie_equipo" />
+                <ScalarProperty Name="refrigeracion_equipo" ColumnName="refrigeracion_equipo" />
+                <ScalarProperty Name="modelo_equipo" ColumnName="modelo_equipo" />
+                <ScalarProperty Name="nombre_equipo" ColumnName="nombre_equipo" />
+                <ScalarProperty Name="marca_quipo" ColumnName="marca_quipo" />
+                <ScalarProperty Name="grupo_equipo" ColumnName="grupo_equipo" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdenesTrabajo">
+            <EntityTypeMapping TypeName="BDD_HRVModel.OrdenesTrabajo">
+              <MappingFragment StoreEntitySet="OrdenesTrabajo">
+                <ScalarProperty Name="orden_auxint" ColumnName="orden_auxint" />
+                <ScalarProperty Name="orden_auxvar" ColumnName="orden_auxvar" />
+                <ScalarProperty Name="orden_latitud" ColumnName="orden_latitud" />
+                <ScalarProperty Name="orden_longitud" ColumnName="orden_longitud" />
+                <ScalarProperty Name="orden_rutaimagen" ColumnName="orden_rutaimagen" />
+                <ScalarProperty Name="orden_imagentr" ColumnName="orden_imagentr" />
+                <ScalarProperty Name="orden_observaciontr" ColumnName="orden_observaciontr" />
+                <ScalarProperty Name="orden_fechafintr" ColumnName="orden_fechafintr" />
+                <ScalarProperty Name="orden_fechainiciotr" ColumnName="orden_fechainiciotr" />
+                <ScalarProperty Name="orden_fechafin" ColumnName="orden_fechafin" />
+                <ScalarProperty Name="orden_fechainicio" ColumnName="orden_fechainicio" />
+                <ScalarProperty Name="orden_notas" ColumnName="orden_notas" />
+                <ScalarProperty Name="orden_estado" ColumnName="orden_estado" />
+                <ScalarProperty Name="orden_problema" ColumnName="orden_problema" />
+                <ScalarProperty Name="orden_tecnico" ColumnName="orden_tecnico" />
+                <ScalarProperty Name="orden_tipotrabajo" ColumnName="orden_tipotrabajo" />
+                <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+                <ScalarProperty Name="id_orden" ColumnName="id_orden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListaTrabajos">
+            <EntityTypeMapping TypeName="BDD_HRVModel.ListaTrabajos">
+              <MappingFragment StoreEntitySet="ListaTrabajos">
+                <ScalarProperty Name="detalle_listatrabajo" ColumnName="detalle_listatrabajo" />
+                <ScalarProperty Name="id_listatrabajo" ColumnName="id_listatrabajo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdenesTrabajoDetalle">
+            <EntityTypeMapping TypeName="BDD_HRVModel.OrdenesTrabajoDetalle">
+              <MappingFragment StoreEntitySet="OrdenesTrabajoDetalle">
+                <ScalarProperty Name="auxi_ordendetalle" ColumnName="auxi_ordendetalle" />
+                <ScalarProperty Name="auxv_ordendetalle" ColumnName="auxv_ordendetalle" />
+                <ScalarProperty Name="id_listatrabajo" ColumnName="id_listatrabajo" />
+                <ScalarProperty Name="id_orden" ColumnName="id_orden" />
+                <ScalarProperty Name="id_ordendetalle" ColumnName="id_ordendetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

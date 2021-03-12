@@ -1,0 +1,141 @@
+﻿@model WebApplication.Models.Clientes
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <hr style="height: 2px; border-width: 0; color:blue; background-color:#2A61DF">
+
+    <div class="container">
+        <form class="form-horizontal" role="form">
+            <div class="form-row">
+
+                <label for="prov" class="control-label col-md-2">Provincia:</label>
+                <div class="col-md-4">
+                    @Html.DropDownList("provincia_cliente", null, "--Seleccione Provincia--", htmlAttributes: new { @class = "form-control", @id = "ddlProv", @onchange = "FunGetCuidad();", style = "Width:100%" })
+                </div>
+                <label for="cui" class="control-label col-md-2">Cuidad:</label>
+                <div class="col-md-4">
+                    @Html.DropDownList("Cuidad", null, htmlAttributes: new { @class = "form-control", @id = "ddlCuid" })
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <label for="cliente" class="control-label col-md-2">Cliente:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.nombre_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtCliente", maxlength = "100", style = "text-transform:uppercase;" } })
+                </div>
+                <label for="ruc" class="control-label col-md-2">Ruc:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ruc_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtRuc", maxlength = "13" } })
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <label for="direc" class="control-label col-md-2">Direccion:</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.direccion_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtDirec", @maxlength="200", style = "text-transform:uppercase;" } })
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <label for="direc" class="control-label col-md-2">Telefono 1:</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.telefono1_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtTel1" , @maxlength = "10" } })
+                    @*<input type="number" class="form-control" id="txtTel1" />*@
+                </div>
+                <label for="direc" class="control-label col-md-2">Telefono 2:</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.telefono2_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtTel2", @maxlength = "10" } })
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <label for="direc" class="control-label col-md-2">Email:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.email_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtEmail", maxlength = "50", style = "text-transform:lowercase;" } })
+                </div>
+                <label for="direc" class="control-label col-md-2">Web:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.web_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtWeb", maxlength = "50", style = "text-transform:lowercase;" } })
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <label for="direc" class="control-label col-md-2">Contacto 1:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.contacto1_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtContac1", maxlength = "50", style = "text-transform:uppercase;" } })
+                </div>
+                <label for="direc" class="control-label col-md-2">Celular:</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.celular1_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtCel1", @maxlength = "10" } })
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <label for="direc" class="control-label col-md-2">Contacto 2:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.contacto2_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtContac2", maxlength = "50", style = "text-transform:uppercase;" } })
+                </div>
+                <label for="direc" class="control-label col-md-2">Celular:</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.celular2_cliente, new { htmlAttributes = new { @class = "form-control", @id = "txtCel2", @maxlength = "10" } })
+                </div>
+            </div>
+        </form>
+
+        <hr style="height: 2px; border-width: 0; color:blue; background-color:#2A61DF">
+          
+        <div class="container text-center">
+            <div class="btn-group btn-group-justified">       
+                <button type="button" class="btn btn-outline-primary btn-sm ml-1" id="btnRegresar">Regresar</button>
+                <button type="button" class="btn btn-outline-success btn-sm ml-1" id="btnGuardar">Guardar</button>
+            </div>
+
+        </div>
+           
+        
+
+    </div>
+   
+}
+
+
+
+
+@section scripts{
+
+    <script src="~/JQuery/Clientes.js"></script>
+
+      <script>
+
+          function FunGetCuidad() {
+
+              var _prov = $('#ddlProv').val();
+
+              $.ajax({
+                  url: '/Clientes/FunFillCuidad',
+                  type: 'GET',
+                  dataType: "JSON",
+                  data: { pro: _prov },
+                  success: function (response) {
+                      $("#ddlCuid").html("");
+                      $("#ddlCuid").append($('<option></option>').val("0").html("--Seleccione Cuidad--"));                 
+                      $.each(response, function (index, value) {
+                          $("#ddlCuid").append(
+                              $('<option></option>').val(value.CuidadId).html(value.Cuidad));
+                      });
+                  }
+
+              });
+          }
+
+      </script>
+    
+    }

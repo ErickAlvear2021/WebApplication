@@ -1,0 +1,234 @@
+﻿@model IEnumerable<WebApplication.Controllers.ConexionDTO.Catalogo>
+
+@{
+    List<WebApplication.Controllers.ConexionDTO.Equipo> _equipos = ViewBag.Equipos;
+}
+
+<title>@ViewBag.titulo</title>
+
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="clieid"id="clienteid" value="@ViewBag.ClienteId" />
+<div class="container">
+
+    <form class="form-horizontal" role="form">
+        <div class="form-row">
+            <div class="col-md-12">
+                <table id="tabla" class="table table-bordered">
+
+                    <thead class="text-center bg-info">
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Contacto</th>
+                            <th>Telefono</th>
+                            <th>Celular</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody class="text-center">
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cliente)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Contacto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Celular)
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <div align="left" style="margin-bottom:5px;">
+            <button type="button" class="btn btn-outline-primary" id="btnAgregar"><i class='fas fa-plus'></i> </button>
+        </div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group col-md-12">
+                <div class="container">
+                    <div class="table">
+                        <div class="row justify-content-center">
+                            <label for="prov" class="control-label col-md-1">Equipo:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="txtEquipo" maxlength="100" placeholder="nombre del equipo" style="text-transform:uppercase;">
+                            </div>
+                            <label for="prov" class="control-label col-md-1">Grupo:</label>
+                            <div class="col-md-4">
+                                @Html.DropDownList("grupo_equipo", null, "---Seleccione Grupo---", htmlAttributes: new { @class = "form-control", @id = "ddlGrupo", style = "Width:100%" })
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-row justify-content-center">
+                            <label for="prov" class="control-label col-md-1">Marca:</label>
+                            <div class="col-md-4">
+                                @Html.DropDownList("marca_equipo", null, "---Seleccione Marca---", htmlAttributes: new { @class = "form-control", @id = "ddlMarca", style = "Width:100%" })
+                            </div>
+                            <label for="prov" class="control-label col-md-1">Modelo:</label>
+                            <div class="col-md-4">
+                                @Html.DropDownList("modelo_equipo", null, "---Seleccione Modelo---", htmlAttributes: new { @class = "form-control", @id = "ddlModelo", style = "Width:100%" })
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-row justify-content-center">
+                            <label for="prov" class="control-label col-md-1">Serie:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="txtSerie" maxlength="50" placeholder="serie del equipo" style="text-transform:uppercase;">
+                            </div>
+                            <label for="prov" class="control-label col-md-1">Voltaje:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="txtVoltaje" maxlength="50" placeholder="voltaje del equipo" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-row justify-content-center">
+                            <label for="prov" class="control-label col-md-1">Presion:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="txtPresion" maxlength="50" placeholder="presion del equipo" style="text-transform:uppercase;">
+                            </div>
+                            <label for="prov" class="control-label col-md-1">Amp:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="txtAmperaje" maxlength="50" placeholder="amperaje del equipo" style="text-transform:uppercase;">
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="form-row justify-content-center" id="divestado" style="display:none">
+                            <div class="form-check" id="divcheck">
+                                <input type="checkbox" class="form-check-input" id="chkEstado">
+                                <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h4 class="mb-0">
+
+                                    <span class="label label-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"><span style="color: cornflowerblue"><i class="fas fa-cogs"></i></span> <i class="fas fa-chevron-down float-lg-right"></i></span>
+                                </h4>
+                            </div>
+
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                          
+                                            <div class="table-responsive">
+                                                <table id="tblEquipo" class="table table-striped table-border table-condensed" style="width: 100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="display: none;">EquipoId</th>
+                                                            <th>Grupo</th>
+                                                            <th>Equipo</th>
+                                                            <th>Marca</th>
+                                                            <th>Modelo</th>
+                                                            <th>Estado</th>
+                                                            <th style="display: none;">Serie</th>
+                                                            <th style="display: none;">Voltaje</th>
+                                                            <th style="display: none;">Amperaje</th>
+                                                            <th style="display: none;">Presion</th>
+                                                            <th class="text-center">Opciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in _equipos)
+                                                        {
+                                                            <tr id="row_@item.ArryEquipoId">
+                                                                <td style="display: none;">
+                                                                    @Html.DisplayFor(modelItem => item.ArryEquipoId)
+                                                                    <input type="hidden" name="hidden_equipoid[]" id="equipoid@(item.ArryEquipoId)" value="@item.ArryEquipoId" />
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ArryGrupo)
+                                                                    <input type="hidden" name="hidden_grupo[]" id="grupoid@(item.ArryEquipoId)" value="@item.ArryGrupoId" />
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ArryEquipo)
+                                                                    <input type="hidden" name="hidden_equipo[]" id="equipo@(item.ArryEquipoId)" value="@item.ArryEquipo" />
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ArryMarca)
+                                                                    <input type="hidden" name="hidden_marca[]" id="marcaid@(item.ArryEquipoId)" value="@item.ArryMarcaId" />
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ArryModelo)
+                                                                    <input type="hidden" name="hidden_modelo[]" id="modeloid@(item.ArryEquipoId)" value="@item.ArryModeloId" />
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ArryEstado)
+                                                                    <input type="hidden" name="hidden_estado[]" id="estado@(item.ArryEquipoId)" value="@item.ArryEstado" />
+                                                                </td>
+                                                                <td style="display: none;">
+                                                                    <input type="hidden" name="hidden_serie[]" id="serie@(item.ArryEquipoId)" value="@item.ArrySerie" />
+                                                                </td>
+                                                                <td style="display: none;">
+                                                                    <input type="hidden" name="hidden_voltaje[]" id="voltaje@(item.ArryEquipoId)" value="@item.ArryVoltaje" />
+                                                                </td>
+                                                                <td style="display: none;">
+                                                                    <input type="hidden" name="hidden_amperaje[]" id="amperaje@(item.ArryEquipoId)" value="@item.ArryAmperaje" />
+                                                                </td>
+                                                                <td style="display: none;">
+                                                                    <input type="hidden" name="hidden_presion[]" id="presion@(item.ArryEquipoId)" value="@item.ArryPresion" />
+                                                                </td>
+                                                                <td>
+                                                                    <div class="text-center">
+                                                                        <div class="btn-group">
+                                                                            <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="@item.ArryEquipoId"><i class="fas fa-pen"></i></button>
+                                                                            <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" disabled id="@item.ArryEquipoId"><i class="fas fa-trash"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+  
+
+</div>
+<div class="container text-center">
+    <div class="btn-group btn-group-justified">
+        <button type="button" class="btn btn-outline-primary btn-sm ml-1" id="btnRegresar">Regresar</button>
+        <button type="button" class="btn btn-outline-success btn-sm ml-1" id="btnGuardar">Guardar</button>
+    </div>
+
+</div>
+   
+}
+
+
+@section scripts{
+    <script src="~/JQuery/ClienteEquipo.js"></script>
+    
+}

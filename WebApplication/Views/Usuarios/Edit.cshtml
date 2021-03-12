@@ -1,0 +1,72 @@
+﻿@model WebApplication.Models.Usuarios
+
+@{
+    Layout = null;
+    bool estado = false;
+    string LblEstado = "Activo";
+    if (Model.estado_usuario)
+    {
+        estado = true;
+        LblEstado = "Activo";
+    }
+    else
+    {
+        estado = false;
+        LblEstado = "Inactivo";
+    }
+}
+
+
+@using (Html.BeginForm())
+{
+    @*@Html.AntiForgeryToken()*@
+    @Html.HiddenFor(model => model.login_usuario)
+
+    <div class="container">
+
+        <form class="form-horizontal" role="form">
+            <div class="form-row">
+                <label for="perfil" class="control-label col-md-2">Perfil:</label>
+                <div class="col-md-4">
+                    @Html.DropDownList("id_perfil", null, "--Seleccione Perfil--", htmlAttributes: new { @class = "form-control",@id="ddlPerfil" })                 
+                </div>
+            </div>
+            <hr/>
+            <div class="form-row">
+                <label for="nombres" class="control-label col-md-2">Nombres:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.nombre_usuario, new { htmlAttributes = new { @class = "form-control",@id="txtNombre", style = "text-transform:uppercase;" } })
+                </div>
+                <label for="apellidos" class="control-label col-md-2">Apellidos:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.apellido_usuario, new { htmlAttributes = new { @class = "form-control",@id="txtApellido", style = "text-transform:uppercase;" } })
+                </div>
+            </div>
+            <hr/>
+            <div class="form-row">
+                <label for="login" class="control-label col-md-2">Login:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.login_usuario, new { htmlAttributes = new { @class = "form-control",@id="txtLogin" } })
+                </div>
+                <label for="password" class="control-label col-md-2">Contraseña:</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.password_usuario, new { htmlAttributes = new { @class = "form-control",@id= "txtPassword",@type="password" } })
+                </div>
+            </div>
+            <hr/>
+            <div class="form-row">
+                <label for="estado" class="control-label col-md-2">Estado:</label>
+              
+                <div class="checkbox col-md-1">
+                    <label for="estado" class="control-label col-md-2", id="LblEstado">@LblEstado</label>
+                    @Html.CheckBox("Estado", @estado, htmlAttributes: new { @class = "form-check-input", @id = "ChkEstado" })
+                </div>
+            </div>
+        </form>
+
+    </div>
+       
+    
+}
+
+
